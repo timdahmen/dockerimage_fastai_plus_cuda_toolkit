@@ -17,6 +17,7 @@ ENV SHELL /bin/bash
 SHELL ["/bin/bash", "-c"]
 
 # Create user and set required ownership
+RUN echo 'Creating user 1000 for aetna image building'
 RUN useradd -M -s "$SHELL" -N -u ${NB_UID} ${NB_USER}; \
     if [[ -n "$HOME" && ! -d "$HOME" ]]; then \
         mkdir -p "${HOME}"; \
