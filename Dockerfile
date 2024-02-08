@@ -31,6 +31,15 @@ RUN useradd -M -s "$SHELL" -N -u ${NB_UID} ${NB_USER}; \
         chmod 0440 /etc/sudoers; \
     fi;
 
+# s6 - 01-copy-tmp-home
+RUN set -ex; \
+    mkdir -p /tmp_home; \
+    cp -r "${HOME}" /tmp_home; \
+    chown -R "${NB_USER}:${NB_GROUP}" /tmp_home;
+
+# Set default user
+USER $NB_USER
+
 RUN set -ex; \
     apt-get -y update; \
     apt-get install -y --no-install-recommends \
