@@ -13,13 +13,13 @@ RUN set -ex; \
 	apt-get install -y --no-install-recommends \
 		cmake; \
     apt-get install -y --no-install-recommends \
-        python3 python3-dev python-pybind11 python3-pip; \
+        python3 python3-dev python3-pip; \
     apt-get clean; 
 	
 RUN set -ex; \	
     rm -rf /var/lib/apt/lists/*;
 
 RUN set -ex; \
-    pip3 install tifffile fastai torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu118;
+    pip3 install tifffile pybind11[global] fastai torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu118;
 
 ENTRYPOINT ["/bin/bash"]
