@@ -47,7 +47,7 @@ RUN set -ex; \
         python3 python3-pip; \
     apt-get clean; \
     apt-get install -y --no-install-recommends \
-        cuda-toolkit nvidia-gds;
+        cuda-toolkit nvidia-gds; \
     rm -rf /var/lib/apt/lists/*;
 
 RUN set -ex; \
