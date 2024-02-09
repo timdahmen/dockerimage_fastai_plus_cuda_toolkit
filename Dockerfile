@@ -10,6 +10,8 @@ SHELL ["/bin/bash", "-c"]
 
 RUN set -ex; \
     apt-get -y update; \
+	apt-get install -y --no-install-recommends \
+		cmake; \
     apt-get install -y --no-install-recommends \
         python3 python3-pip; \
     apt-get clean; 
