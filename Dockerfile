@@ -11,10 +11,10 @@ ENV NB_UID ${NB_UID:-1000}
 ENV NB_PREFIX ${NB_PREFIX:-/}
 ENV S6_CMD_WAIT_FOR_SERVICES_MAXTIME 0
 ENV HOME /home/$NB_USER
-ENV SHELL /bin/bash
+ENV SHELL /bin/sh
 
-# Set shell to bash
-SHELL ["/bin/bash", "-c"]
+# Set shell to sh
+SHELL ["/bin/sh", "-c"]
 
 # Create user and set required ownership
 RUN echo 'Creating user 1000 for aetna image building'
@@ -45,12 +45,15 @@ RUN set -ex; \
     apt-get -y update; \
     apt-get install -y --no-install-recommends \
         python3 python3-pip; \
-    apt-get clean; \
-    apt-get install -y --no-install-recommends \
-        cuda-toolkit nvidia-gds; \
+    apt-get clean; 
+	
+RUN set -ex; \	
+    apt-get install -y --no-install-recommends cuda-toolkit nvidia-gds; \
+	
+RUN set -ex; \	
     rm -rf /var/lib/apt/lists/*;
 
 RUN set -ex; \
     pip3 install tifffile fastai torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu118;
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/sh"]
