@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=nvidia/cuda:12.3.1-devel-ubuntu20.04
+ARG BASE_IMAGE=nvidia/cuda:12.3.1-devel-ubuntu22.04
 
 FROM $BASE_IMAGE
 
