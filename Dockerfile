@@ -12,8 +12,9 @@ RUN set -ex; \
     apt-get -y update; \
 	apt-get install -y --no-install-recommends \
 		cmake; \
+	add-apt-repository ppa:deadsnakes/ppa; \
     apt-get install -y --no-install-recommends \
-        python3 python3-pip; \
+        python3.11 python3-pip; \
     apt-get clean; 
 	
 RUN set -ex; \	
